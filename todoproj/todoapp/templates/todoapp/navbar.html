@@ -1,0 +1,34 @@
+<!-- Navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand mr-ato" href="{% url 'home' %}">TODO</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          
+          <!-- User authentication  -->
+          {% if user.is_authenticated %}
+          <li class="nav-item mx-auto">
+            <a class="nav-link text-white" aria-current="page" href="#">{{user}}</a>
+          </li>
+          <li class="nav-item mx-auto">
+            <a class="nav-link text-white" aria-current="page" href="{% url 'logout' %}">logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item mx-auto">
+            <a class="nav-link text-white" aria-current="page" href="{% url 'login' %}">login</a>
+          </li>
+          {% endif %}
+          <li class="nav-item mx-auto">
+            <a class="nav-link btn btn-outline-light text-white" aria-current="page" href="{% url 'signup' %}">signup</a>
+          </li>
+          <!-- User authentication part done -->
+
+        </ul>
+
+        
+      </div>
+    </div>
+  </nav>

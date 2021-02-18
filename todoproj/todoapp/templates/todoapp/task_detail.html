@@ -1,0 +1,24 @@
+{% extends 'todoapp/base.html' %}
+{%block content%}
+<div class="container mt-2">
+    <h5>{{item.id}}</h5>
+    <h5>{{item.user}}</h5>
+    <h5>{{item.title}}</h5>
+    <h5>{{item.description}}</h5>
+    <h5>Completed At{{item.completed_at}}</h5>
+    <h5>Created At {{item.created_at}}</h5>
+    <h5>Modified At {{item.modified_at}}</h5>
+    <h5>{{item.important}}</h5>
+    
+    <p>
+        <a class="btn btn-primary mx-1" href="{% url 'update' pk=item.id %}">update</a>
+        <a class="btn btn-primary mx-1" href="{% url 'delete' pk=item.id %}">delete</a>
+        {% if not item.completed_at %}
+        <a class="btn btn-primary mx-1" href="{% url 'complete' item.id %}">complete</a>
+        {% endif %}
+    </p>
+
+    
+</div>
+
+{% endblock %}
