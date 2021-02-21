@@ -10,6 +10,8 @@
           
           <!-- User authentication  -->
           {% if user.is_authenticated %}
+         
+          {% include 'todoapp/notification.html' %}
           <li class="nav-item mx-auto">
             <a class="nav-link text-white" aria-current="page" href="#">{{user}}</a>
           </li>

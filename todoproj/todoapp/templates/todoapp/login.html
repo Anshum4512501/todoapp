@@ -4,6 +4,20 @@
 <div class="container mt-2">
     <div class="row">
         <div class="col-md-8">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <!-- <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                                {{ message }}
+                        </li> -->
+                        <div  role="alert" {% if message.tags %} class="alert alert-success {{ message.tags }}"{% endif %}>
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                            {{ message }}
+                          </div>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             <div class="jumbotron shadow-sm p-3">
                 <h1 class="display-4">Welcome to Task Management</h1>
                 <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>

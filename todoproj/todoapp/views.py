@@ -14,8 +14,9 @@ from django.views.generic import DetailView,ListView,DeleteView,UpdateView
 from .forms import ToDoForm
 from .models import ToDo
 from django.http import Http404
+from django.contrib.messages.views import SuccessMessageMixin
 
-class SignUpView(CreateView):
+class SignUpView(SuccessMessageMixin,CreateView):
     form_class = UserCreationForm
     template_name = 'todoapp/signup.html'
     success_url = reverse_lazy('login')
@@ -30,9 +31,10 @@ class SignUpView(CreateView):
         raise ValidationError("Not valid values from ")        
         
 
-class LoginView(LoginView):
+class LoginView(SuccessMessageMixin,LoginView):
     template_name = 'todoapp/login.html'
     form_class = AuthenticationForm
+    success_message = "SuccessFully Logged IN"
     
 
 class HomeView(TemplateView,LoginRequiredMixin):
@@ -109,7 +111,6 @@ def complete_date(request,pk):
       
     except ToDo.DoesNotExist:
         raise Http404("Todo does not exist")
-    print(instance.created_at)
     if instance.completed_at is None:
         instance.complete_task()
         context = {'completed':True,'item':instance}

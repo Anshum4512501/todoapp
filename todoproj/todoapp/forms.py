@@ -4,4 +4,4 @@ class ToDoForm(ModelForm):
     
     class Meta:
         model = ToDo
-        fields = ['title','description','important']
+        fields = ['title','description','due_date','important']

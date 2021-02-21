@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'todoapp',
+    # 'TodoappConfig',
     'crispy_forms',
+    'todoapp',
+    # 'todoproj',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+STATIC_FILES_DIR = os.path.join(BASE_DIR,'/static/')
