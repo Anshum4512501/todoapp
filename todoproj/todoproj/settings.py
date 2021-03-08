@@ -54,12 +54,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'todoproj.urls'
-
+print(os.path.join(BASE_DIR, 'templates').replace('\\','/'))
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join( BASE_DIR, 'templates').replace('\\','/')
+            os.path.join(BASE_DIR, 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -127,3 +127,7 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 STATIC_FILES_DIR = os.path.join(BASE_DIR,'/static/')
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")

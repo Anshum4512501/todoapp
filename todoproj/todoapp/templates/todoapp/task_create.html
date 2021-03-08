@@ -1,13 +1,60 @@
-{% extends 'todoapp/base.html' %}
+{% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {%block content%}
 <div class="container mt-2">
-    <form  method="post">
-        {% csrf_token %}
-        {{form|crispy}}
-        <input type="submit" class="btn btn-primary" value="save">
-    </form>
-    
+    <div class="row mt-2">
+        <div class="col-md-11 col-lg-4 col-11 col-mb-2">
+            <div class="heading">
+                <h1 class="h1 display text-light">
+                    Fill Details
+                </h1>
+                <p class="text-muted">
+                    Hey,
+                    Kindly fill all the details that are Required and look into those fields which are not tend to be
+                    changed
+                    Kindly fill all the details that are Required and look into those fields which are not tend to be
+                    changed
+                    Kindly fill all the details that are Required and look into those fields which are not tend to be
+                    changed
+                    Kindly fill all the details that are Required and look into those fields which are not tend to be
+                    changed
+                    Kindly fill all the details that are Required and look into those fields which are not tend to be
+                    changed
+                    Kindly fill all the details that are Required and look into those fields which are not tend to be
+                    changed
+                    Kindly fill all the details that are Required and look into those fields which are not tend to be
+                    changed
+                </p>
+            </div>
+        </div>
+        <div class="col-md-11 col-lg-8 col-11 col-mb-2">
+            <div class="content shadow-sm text-white text-uppercase">
+                <form method="post">
+                    {% csrf_token %}
+                    <!-- {% for field in fields %}
+                    {{field}}
+                    {% endfor %}
+                    {{form|crispy}} -->
+                    <div class="mt-2">
+                        {{form.title|as_crispy_field}}
+                    </div>
+                    <div class="mt-2">
+                        {{form.description|as_crispy_field}}
+                    </div>
+                    <div class="mt-2">
+                        {{form.due_date|as_crispy_field}}
+                    </div>
+                    <div class="mt-2">
+                        {{form.important|as_crispy_field}}
+                    </div>
+
+                    <input type="submit" class="btn btn-primary mt-3" value="save">
+                </form>
+
+            </div>
+        </div>
+    </div>
+
 </div>
 
 {% endblock %}

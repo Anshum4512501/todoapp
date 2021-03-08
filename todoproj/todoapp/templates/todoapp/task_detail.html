@@ -1,103 +1,193 @@
-{% extends 'todoapp/base.html' %}
+{% extends 'base.html' %}
 {% load todoapp_filters %}
-{%block content%}
+{% load crispy_forms_tags %}
+{%block content %}
 <div class="container mt-2">
-    <h4>Task Details</h4>
+    <h4 class="text-white display-6 strong">Task Details</h4>
     <div class="row">
-        <div class="col-md-10 col-11 mx-auto">
+        <div class="col-md-7 col-11 col-mb-2">
+            <div class="content">
+                <h6 class=" text-muted mb-4">Hello World</h6>
+                <p class=" task-detail-para text-muted infobox lh-sm">Lighter weight text (relative to the parent
+                    element).
+                    Lighter weight text (relative to the parent element).
+                    Lighter weight text (relative to the parent element).
+                    Lighter weight text (relative to the parent element).
+                    Lighter weight text (relative to the parent element).
+                    Lighter weight text (relative to the parent element).
+                    Lighter weight text (relative to the parent element).
+                    Lighter weight text (relative to the parent element).
+                    Lighter weight text (relative to the parent element).
+                    Lighter weight text (relative to the parent element).
+                </p>
+            </div>
+        </div>
+        <div class="col-md-5 col-11 mx-auto">
             <div class="row mt-2 ">
-                <div class="col-md-12 col-lg-4 shadow-sm">
-                    <div class="content">
+                <div class="col-md-12  col-lg-6 ">
+                    <div class="content  shadow-sm headline ">
                         <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
                             <div class="card-header">Task ID</div>
                             <div class="card-body">
-                              <h5 class="card-title"></h5>
-                              <p class="card-text">{{item.id}}</p>
+                                <h5 class="card-title"></h5>
+                                <p class="card-text">{{item.id}}</p>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="col-md-12 col-lg-4 shadow-sm">
-                    <div class="content">
+                <div class="col-md-12 col-lg-6 ">
+                    <div class="content shadow-sm headline ">
                         <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
                             <div class="card-header">Task Title</div>
                             <div class="card-body">
-                              <h5 class="card-title"></h5>
-                              <p class="card-text">{{item.title}}</p>
+                                <h5 class="card-title"></h5>
+                                <p class="card-text">{{item.title}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-4 shadow-sm">
-                    <div class="content">
-                        <div class="card text-white {% if 'ago!' in item|all_set %} bg-danger {% else %} bg-success {%endif %} mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Expiration Status</div>
-                            <div class="card-body">
-                              <h5 class="card-title"></h5>
-                              <p class="card-text">{{ item |all_set}}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="row mt-2 ">
-                <div class="col-md-12 col-lg-4 shadow-sm">
-                    <div class="content">
+                <div class="col-md-12 col-lg-6 ">
+                    <div class="content shadow-sm headline">
+                        <div class="card text-white {% if 'ago!' in item|all_set %} bg-danger {% else %} bg-success {%endif %} mb-3"
+                            style="max-width: 18rem;">
+                            <div class="card-header">Expiration Status</div>
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text">{{ item |all_set}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-6 ">
+                    <div class="content shadow-sm headline">
                         <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
                             <div class="card-header">Task Description</div>
                             <div class="card-body">
-                              <h5 class="card-title"></h5>
-                              <p class="card-text">{{item.description}}</p>
+                                <h5 class="card-title"></h5>
+                                <p class="card-text">{{item.description}}</p>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="col-md-12 col-lg-4 shadow-sm">
-                    <div class="content">
+
+
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12 col-lg-6 ">
+                    <div class="content shadow-sm headline">
                         <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
                             <div class="card-header">Due Date</div>
                             <div class="card-body">
-                              
-                              <p class="card-text">{{item.due_date}}</p>
+
+                                <p class="card-text">{{item.due_date}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-4 shadow-sm">
-                    <div class="content">
+                <div class="col-md-12 col-lg-6 ">
+                    <div class="content shadow-sm headline">
                         <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                            <div class="card-header">Completion Date</h5></div>
+                            <div class="card-header">Completion Date</h5>
+                            </div>
                             <div class="card-body">
-                              
-                              <p class="card-text">{{item.completed_at}}
-                              </p>
+
+                                <p class="card-text">{{item.completed_at}}
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8 ">
-                    <div >
-                        <p class="mt-3 shadow-sm p-3">
+                <div class="col-md-12 ">
+                    <div class="">
+                        <p class="mt-3  p-3">
                             <a class="btn btn-dark text-white mx-1" href="{% url 'update' pk=item.id %}">update</a>
                             <a class="btn btn-dark text-white mx-1" href="{% url 'delete' pk=item.id %}">delete</a>
                             {% if not item.completed_at %}
                             <a class="btn btn-dark text-white mx-1" href="{% url 'complete' item.id %}">complete</a>
                             {% endif %}
                         </p>
-                    
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    
-    
-    
+
+
+
+</div>
+
+<div class="container text-white">
+    <div class="row mt-2">
+        <div class="col-8 col-md-8">
+            <!-- <form method="post">
+                {% csrf_token %}
+                {{form|crispy}}
+                <input type="submit" class="btn btn-primary" value="save">
+            </form> -->
+
+
+
+            <h2>Leave your comment!</h2>
+            <div id="comments_section">
+
+                {% if user.is_authenticated %}
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form }}
+                        <button class="btn btn-info" type="submit">Add comment <i class="fas fa-comments"></i></button>
+                    </div>
+                </form>
+                {% else %}
+                <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to add a
+                    comment!</a><br>
+                {% endif %}
+
+                {% if comments %}
+                <strong class="text-secondary">{{ object.number_of_comments }} Comment{{
+                    object.number_of_comments|pluralize }}</strong>
+                <hr>
+                <ul>
+                    {% for comment in comments %}
+                    <li>
+                        <div>
+                            <span>
+                                <strong class="text-info">{{ comment.user }} </strong>
+                                <small class="text-muted">{{ comment.created_at }}</small>
+                            </span>
+                            <p>
+                                {{ comment.description|safe }}
+                                {% if comment.file %}
+                                <div class="rounded">
+                                    <img src="{{ comment.file.url}}" alt="connect" style="max-height:300px">
+
+                                </div>
+                                
+                                {% else %}
+                                <p class="text-white">No Image found</p>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <strong class="text-secondary">No comments yet...</strong>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
 </div>
 
 {% endblock %}

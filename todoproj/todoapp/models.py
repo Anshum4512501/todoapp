@@ -1,4 +1,4 @@
-
+from typing import Optional,Iterable
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.base import Model
@@ -30,11 +30,18 @@ class ToDo(models.Model):
         return super().save()    
 
 class Notes(models.Model):
-    todo = models.OneToOneField(ToDo,on_delete=models.CASCADE)
+    id = models.AutoField(primary_key=True)
+    todo = models.ForeignKey(ToDo,on_delete=models.CASCADE)
     description = models.TextField(help_text="Add your Note Here")  
     created_at = models.DateTimeField(auto_now_add=timezone.now())
     modified_at = models.DateTimeField(auto_now=timezone.now())
-    # file = models.ImageField()
+    file = models.ImageField(upload_to = 'images/',null = True,blank=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+
+    
+
+    def __str__(self) -> str:
+        return str(self.todo) + str(self.user)
     
 
    

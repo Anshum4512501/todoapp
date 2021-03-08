@@ -19,4 +19,7 @@ def all_set(value):
         return "In %s days" % delta.days
 
 # register.filter('cut', all_set)
-    
+
+# @register(name="filter_task")
+# def filter_tasks(tasks):
+#     current_task = tasks.filter()

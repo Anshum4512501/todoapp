@@ -1,6 +1,6 @@
-{% extends 'todoapp/base.html' %}
+{% extends 'base.html' %}
 {%block content%}
-<div class="container d-flex">
+<div class="container bg-light shadow-sm d-flex align-item-center justify-content-center">
     <div class="content">
         <div class="jumbotron">
             <h1 class="display-4">Task Management</h1>
@@ -16,8 +16,23 @@
           </div>
             
     </div>
-
+    <!-- <div class="row">
+        <div class="col-md-4 col-sm-11 mb-2">
+            <div class="content">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Task ID</div>
+                    <div class="card-body">
+                      <h5 class="card-title"></h5>
+                      <p class="card-text">{{item.id}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
     
 </div>
-
+<div class="main">
+    
+</div>
+{% include 'todoapp/footer.html' %}
 {% endblock %}

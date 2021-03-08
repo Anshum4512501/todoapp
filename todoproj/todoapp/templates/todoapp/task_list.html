@@ -1,4 +1,4 @@
-{% extends 'todoapp/base.html' %}
+{% extends 'base.html' %}
 {%block content%}
 <div class="container mt-2">
   {% if objects %}
@@ -29,7 +29,7 @@
             </tbody>
       </table>
       {% else %}
-      <h1>No task yet</h1>
+      <h1 class="text-white">No task yet</h1>
       {% endif %}
     
 </div>

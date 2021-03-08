@@ -17,4 +17,5 @@ urlpatterns = [
     path('task/<slug:pk>/delete',ToDoDeleteView.as_view(),name="delete"),
     path('task/<slug:pk>/update',ToDoUpdateView.as_view(),name="update"),
     path('task/<slug:pk>/complete',complete_date,name="complete"),
+    # path('task/<slug:pk>/',NotesCreateView.as_view(),name="notes_create"),
 ]

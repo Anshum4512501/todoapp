@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+body{
+  background-color: #0e141f;
+  font-family: 'Rubik', sans-serif;
+}
+
+
 .notification {
     background-color: #555;
     color: white;
@@ -28,3 +36,29 @@
     right: 100px;
 
   }
+  .task-detail-para{
+    font-weight: 100;
+
+    /* color:darkgrey; */
+    font-size: 12px !important;
+  }
+  .infobox {
+    padding: 1.25rem 1.5rem 1.5rem;
+    border: 2px solid #ff7c35;
+    border-radius: .5rem;
+    background-color: #080c13;
+    /* margin-top: 3rem; */
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+  .infobox::after {
+    position: absolute;
+    width: 1.8rem;
+    height: 1.8rem;
+    top: calc(50% - 0.9rem);
+    left: -.9rem;
+    content: url(/img/circle-star.svg);
+    background-color: #0e141f;
+    border-radius: .9rem;
+}
