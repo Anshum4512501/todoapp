@@ -16,7 +16,7 @@ from .models import Notes, ToDo
 from django.http import Http404
 from django.contrib.messages.views import SuccessMessageMixin
 from todoproj import settings
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 
@@ -82,6 +82,7 @@ class ToDoCompletedTasksListView(LoginRequiredMixin,ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['objects'] = ToDo.objects.all().filter(user=self.request.user).exclude(completed_at=None)
+        context['completed'] = False
         return context
 class ToDoDetailView(LoginRequiredMixin,DetailView):
     
@@ -102,9 +103,11 @@ class ToDoDetailView(LoginRequiredMixin,DetailView):
         return context
 
     def post(self, request, *args, **kwargs):
+        # print(dir(request.data))
         new_comment = Notes(description=request.POST.get('description'),
                                   user=self.request.user,
-                                  todo=self.get_object())
+                                  todo=self.get_object(),
+                                  file= self.request.FILES.get('file'))
         new_comment.save()
         return self.get(self, request, *args, **kwargs)    
 
@@ -130,6 +133,7 @@ class ToDoUpdateView(LoginRequiredMixin,UpdateView):
         return super().form_valid(form)
 
 @login_required
+
 def complete_date(request,pk):
     try:
       instance = ToDo.objects.get(pk=pk)
@@ -141,7 +145,8 @@ def complete_date(request,pk):
 
         if instance.completed_at is None:
             instance.complete_task()
-            context = {'completed':True,'item':instance}
+            context = {'completed':True,'item':instance,"form":NotesForm()}
+            
             return render(request,'todoapp/task_detail.html',context)
         return HttpResponse("This partucular task is already completed")    
     else:

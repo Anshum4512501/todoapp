@@ -5,6 +5,7 @@ from .models import ToDo
 from django.utils import timezone
 from django.urls import reverse
 from .forms import ToDoForm
+from django.test import Client
 
 # models test
 class ToDoTest(TestCase):
@@ -29,6 +30,12 @@ class ToDoTest(TestCase):
         print(instance)
         self.assertTrue(isinstance(instance, ToDo))
         # self.assertEqual(w.__unicode__(), w.title)
+
+    def test_login_test(self):
+        c = Client()
+        response = c.post('/signin/', {'username': 'anshum45', 'password': 'Anshoo12@#',"csrftoken":"MuaKA6jR9vS0yk4Wp0O1mbWMCJaMw5dL3kQao1gxhbzSt24erVB8sHxSZBSnGFYn"})
+        self.assertEqual(response.status_code,200)
+
 
 
         

@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.base import Model
 from django.db.models.fields import DateTimeField
+from django.forms import widgets,Textarea
 from django.utils import timezone
 # Create your models here.
 
@@ -10,7 +11,9 @@ class DateTimeFields(models.Model):
     created_at = models.DateTimeField(auto_now_add=timezone.now())
     modified_at = models.DateTimeField(auto_now = timezone.now())
 
-
+class CommonModel(models.Model):
+    class Meta:
+        abstract = True
 
 class ToDo(models.Model):
     title = models.CharField(max_length=10000)
@@ -29,6 +32,13 @@ class ToDo(models.Model):
         self.completed_at = timezone.now()
         return super().save()    
 
+
+class RequestDetails(models.Model):
+    user_one = models.ManyToManyField(User,related_name="user_one")
+    user_two = models.ManyToManyField(User,related_name="user_two")
+    
+    pass        
+
 class Notes(models.Model):
     id = models.AutoField(primary_key=True)
     todo = models.ForeignKey(ToDo,on_delete=models.CASCADE)
@@ -38,7 +48,9 @@ class Notes(models.Model):
     file = models.ImageField(upload_to = 'images/',null = True,blank=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
 
-    
+    @property
+    def number_of_comments(self):
+        return Notes.objects.filter(todo=self).count()
 
     def __str__(self) -> str:
         return str(self.todo) + str(self.user)

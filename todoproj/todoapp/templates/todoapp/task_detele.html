@@ -4,7 +4,7 @@
 {%block content%}
 <div class="container mt-2">
     <form method="post">{% csrf_token %}
-        <p>Are you sure you want to delete "{{ object }}"?</p>
+        <p class="text-white">Are you sure you want to delete "{{ object }}"?</p>
         <button class="btn btn-danger">Confirm</button>
     </form>
 </div>

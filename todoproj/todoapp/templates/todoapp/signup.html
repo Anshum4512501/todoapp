@@ -4,31 +4,74 @@
 <div class="container">
 
 <div class="row mt-5">
-    <div class="col-md-6">
-        {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
-        {% endif %}
-        
-        {% if next %}
-            {% if user.is_authenticated %}
-            <p>Your account doesn't have access to this page. To proceed,
-            please login with an account that has access.</p>
-            {% else %}
-            <p>Please login to see this page.</p>
-            {% endif %}
-        {% endif %}
-        
-        <form method="post">
-        {% csrf_token %}
-        
-        {{form|crispy}}
-        <input type="submit" value="submit">
-        </form>
-        
-        {# Assumes you setup the password_reset view in your URLconf #}
-        <p><a href="#">Lost password?</a></p>
+    <div class="col-md-6 text-white">
+        <div class="content p-2">
+            <h1>Do Sign Up Here</h1>
+            <p class="fw-lighter text-light mb-2">Sign up is process to register your self on 
+                this board it is mandetory process-----
+            
+            </p>
+            <p>
+                <small>
+                    You need to fill these details here
+                </small>
+            </p>
+            <p>
+                <ol>
+                    <li>
+                        Username
+                    </li>
+                    <li>
+                        Password
+                    </li>
+                    <li>
+                        Email
+                    </li>
+                </ol>
+            </p>
+            <hr>
+            
+            <p>
+                <small>
+                    Here password reset link is also given you can use and reset your password as well, Somehow It could be a tedious
+                    process to you , but we have made this super simplify
+
+                </small>
+            </p>
+        </div>
         
     </div>
+    <div class="col-md-6 text-white">
+        <div class="content shadow">
+            {% if form.errors %}
+            <p>Your username and password didn't match. Please try again.</p>
+            {% endif %}
+            
+            {% if next %}
+                {% if user.is_authenticated %}
+                <p>Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.</p>
+                {% else %}
+                <p>Please login to see this page.</p>
+                {% endif %}
+            {% endif %}
+            
+            <form method="post" class="p-2">
+            {% csrf_token %}
+            
+            {{form|crispy}}
+            <div class="mb-2"></div>
+            <input class=" btn btn-info rounded-0" type="submit" value="submit">
+            <span ><a href="#" class="fw-normal fs-6 text-muted mx-2"><small>Lost password?</small> </a></span>
+            </form>
+            
+            {# Assumes you setup the password_reset vie w in your URLconf #}
+            
+            
+        </div>
+        
+    </div>
+    
 </div>
 </div>
 

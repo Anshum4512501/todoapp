@@ -20,6 +20,19 @@ def all_set(value):
 
 # register.filter('cut', all_set)
 
-# @register(name="filter_task")
-# def filter_tasks(tasks):
-#     current_task = tasks.filter()
+@register.filter(name='filter_tasks')
+def filter_tasks(task):
+    
+    if task.completed_at == None:
+        return task
+    return None     
+
+
+@register.filter(name='total_tasks')
+def total_tasks(tasks):
+    count = 0
+    for task in tasks:
+        if task.completed_at is  None:
+            count = count+1
+
+    return count        

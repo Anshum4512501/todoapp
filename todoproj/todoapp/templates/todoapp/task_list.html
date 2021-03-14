@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 {%block content%}
 <div class="container mt-2">
-  {% if objects %}
-    <table class="table table-light table-striped">
+  
+  {% if objects%}
+  
+      <h1 class="text-white">Completed Tasks</h1>
+
+    <table class="table table-style table-striped ">
         
             <thead>
-              <tr>
+              <tr class="text-white">
                 <th scope="col">ID</th>
               
                 <th scope="col">Title</th>
@@ -17,11 +21,11 @@
             <tbody>
                 {% for item in objects %}
                 <tr>
-                    <th scope="row">{{item.id}}</th>
-                    <td>{{item.title}}</td>
-                    <td>{{item.description}}</td>
-                    <td>{{item.important}}</td>
-                    <td><a class="btn btn-light" href="{% url 'detail' pk=item.id %}">detail</a> </td>
+                    <th class="text-light fw-lighter" scope="row">{{item.id}}</th>
+                    <td class="text-light fw-lighter"><small>{{item.title}}</small> </td>
+                    <td class="text-light fw-lighter"> <small>{{item.description}}</small></td>
+                    <td class="text-light fw-lighter"> <small>{{item.important}}</small></td>
+                    <td class="text-light fw-lighter"> <a class="btn btn-danger rounded-0" href="{% url 'delete' pk=item.id %}">delete</a> </td>
                     
                   </tr>
                 {% endfor %}

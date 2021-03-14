@@ -1,6 +1,8 @@
-from django.forms import ModelForm, fields
+from django.forms import ModelForm, fields, widgets,Textarea
 from .models import ToDo,Notes
 from django import forms
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 class ToDoForm(ModelForm):
     
     class Meta:
@@ -20,20 +22,21 @@ class ToDoForm(ModelForm):
 		# 	}
 
 
-class NotesForm(ModelForm):
+# class NotesForm(ModelForm):
     
-    class Meta:
-        model = Notes
-        fields = ['description','file']
-        # widgets = {
-        #     'title': forms.TextInput(
-		# 		attrs={
-		# 			'class': 'form-control'
-		# 			}
-		# 		),
-        #     'content': forms.Textarea(
-		# 		attrs={
-		# 			'class': 'form-control'
-		# 			}
-		# 		),
-		# 	}
+#     class Meta:
+#     	model = Notes
+#     	fields = ['description','file']
+
+
+
+class NotesForm(ModelForm):
+	description = forms.CharField(widget=forms.Textarea(attrs={'rows': 2, 'cols': 40}))
+	class Meta:
+		model = Notes
+		fields = ['description','file']
+	def __init__(self,*args, **kwargs ) -> None:
+		super().__init__(*args, **kwargs)
+		self.fields['description'].widget.attrs.update({'class': 'mb-0'})
+		
+		

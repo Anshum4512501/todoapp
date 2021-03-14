@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {%block content%}
-<div class="container bg-light shadow-sm d-flex align-item-center justify-content-center">
+<div class="container shadow-sm d-flex align-item-center justify-content-center">
     <div class="content">
         <div class="jumbotron">
-            <h1 class="display-4">Task Management</h1>
-            <p class="lead"> This is a simple and easy to use.</p>
+            <h1 class="display-4 text-white">Task Management</h1>
+            <p class="lead text-muted display-6"> This is a simple and easy to use.</p>
             <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <p class="text-white fw-lighter">It uses utility classes for typography and spacing to space content out within the larger container.</p>
             <p class="lead">
                 <a class="btn btn-primary mx-2 text-white text-uppercase" aria-current="page" href="{% url 'newtask' %}">create</a>
                 <a class="btn btn-primary mx-2 text-white text-uppercase" href="{% url 'completedtasks' %}">completed</a>
@@ -34,5 +34,5 @@
 <div class="main">
     
 </div>
-{% include 'todoapp/footer.html' %}
+<!-- {% include 'todoapp/footer.html' %} -->
 {% endblock %}
